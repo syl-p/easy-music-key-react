@@ -1,4 +1,4 @@
-export default function Degree({degree, mode}){
+export default function Degree({view, degree, mode, soundCallback}){
   return (
     <div className="degree">
       <span className="degree__index">
@@ -6,14 +6,16 @@ export default function Degree({degree, mode}){
       </span>
       <div className="degree__infos">
         <div className="degree__infos__title">
-          <h2>{degree.notation}</h2>
-          <a href="#">
+          <h2>
+            {view === 'degree' ? degree.notation : mode.name}
+          </h2>
+          <a onClick={() => soundCallback(degree.notes)}>
             <i className="mdi mdi-volume-high"></i>
           </a>
         </div>
         <ul className="degree__infos__content">
           {mode.notes.map(note => (
-            <li key={note} className={degree.notes.includes(note) ? 'active' : null}>{note}</li>
+            <li key={note} className={view === 'degree' && degree.notes.includes(note) ? 'active' : null}>{note}</li>
           ))}
         </ul>
         <p>Mode: {mode.name}</p>
