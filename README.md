@@ -1,0 +1,1 @@
+easy-music-key-react est un projet visant à créer une interface permettant aux musiciens d'apprendre et de maîtriser les notions simple d'harmonie.
