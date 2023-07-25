@@ -9,7 +9,7 @@ export default function Degree({view, degree, mode, soundCallback}){
           <h2>
             {view === 'degree' ? degree.notation : mode.name}
           </h2>
-          <a onClick={() => soundCallback(degree.notes)}>
+          <a onClick={() => soundCallback(view === 'degree' ? degree.notes : mode.notes, view === 'degree' ? 'degree' : 'mode')}>
             <i className="mdi mdi-volume-high"></i>
           </a>
         </div>

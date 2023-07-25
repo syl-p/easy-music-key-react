@@ -1,8 +1,4 @@
-import {useState} from "react";
-
-export default function Selector({defaultKey, onChangeCallback}) {
-    const [key, setKey] = useState(defaultKey ?? 'C')
-
+export default function Selector({defaultKey, type, onChangeCallback}) {
     const cycle = [
         'F',
         'C',
@@ -19,19 +15,28 @@ export default function Selector({defaultKey, onChangeCallback}) {
         'C♭',
     ]
 
-    function changeKey(fonda) {
-        setKey(key => fonda)
-        onChangeCallback(fonda)
-    }
+    const types = [
+        'major',
+        'minor'
+    ]
 
     return (
-        <>
-            <h1>{key}</h1>
-            <ul className='selector'>
+        <div className="selector">
+            <div className="selector__head">
+                <h1>{defaultKey}</h1>
+                <div>
+                    {
+                        types.map(typeLabel => 
+                            (<button  onClick={() => {onChangeCallback(defaultKey, typeLabel)}} className={type == typeLabel ? 'active' : null} key={typeLabel}>{typeLabel}</button>)
+                        )
+                    }
+                </div>
+            </div>
+            <ul>
                 {cycle.map(c =>
-                    (<li key={c} onClick={() => {changeKey(c)}}>{c}</li>)
+                    (<li className={defaultKey == c ? 'active' : null} key={c} onClick={() => {onChangeCallback(c)}}>{c}</li>)
                 )}
             </ul>
-        </>
+        </div>
     )
 }

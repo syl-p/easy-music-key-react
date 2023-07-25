@@ -13,10 +13,11 @@ function App() {
     scale: new Scale('C'),
   })
 
-  function changeKey (fonda){
+  function changeKey (fonda, type = 'major'){
+    console.log(fonda, type)
     setKey(state => ({
       fonda: fonda,
-      type: 'major',
+      type: type,
       view: 'degree',
       scale: new Scale(fonda)
     }))
@@ -31,8 +32,15 @@ function App() {
     }))
   }
 
-  function sound(notes) {
-    tone.play_chord(notes)
+  function sound(notes, mode) {
+    switch (mode) {
+      case 'mode':
+        tone.play_note_by_note(notes)
+        break;
+      default:
+        tone.play_chord(notes)
+        break;
+    }
   }
 
   const iterations = Array.from({length: 7}, (_, index) => index)
@@ -40,7 +48,7 @@ function App() {
   return (
     <main>
       <aside>
-        <Selector onChangeCallback={changeKey}></Selector>
+        <Selector onChangeCallback={changeKey} defaultKey={key.fonda} type={key.type}></Selector>
       </aside>
       <section>
         <nav>
@@ -62,7 +70,7 @@ function App() {
             {
               iterations.map((iteration) =>
                 (
-                  <li key={iteration}>
+                  <li key={iteration} className='degrees__list__item'>
                     <Degree view={key.view} degree={key.scale.degrees[iteration]} mode={key.scale.modes[iteration]} soundCallback={sound}/>
                   </li>
                 )

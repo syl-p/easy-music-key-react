@@ -168,13 +168,35 @@ nav ul li a {
 nav ul li a.active {
   color: var(--vt-c-green);
   text-decoration: underline;
+  font-weight: bold;
 }
 
-.selector {
+.selector__head {
+  display: flex;
+  gap: 15px;
+  align-items: center;
+  justify-content: center;
+}
+
+.selector__head div {
+  display: flex;
+  gap: 15px;
+}
+
+.selector__head button.active{
+  border-color: var(--vt-c-green);
+  border-width: 2px;
+}
+
+.selector ul{
   list-style: none;
   display: flex;
   justify-content: center;
   gap: 15px;
+}
+
+.selector ul li.active{
+  color: var(--vt-c-green);
 }
 
 
@@ -182,6 +204,10 @@ nav ul li a.active {
   list-style: none;
   padding: 20px;
   margin: auto;
+}
+
+.degrees__list__item {
+  width: 100%;
 }
 
 .degree {
@@ -216,6 +242,7 @@ nav ul li a.active {
 .degree__infos__title a {
   font-size: 25px;
   color: var(--vt-c-green);
+  cursor: pointer;
 }
 
 .degree__infos__content {
@@ -238,6 +265,7 @@ nav ul li a.active {
     display: grid;
     grid-template-columns: 0.7fr 2fr;
     padding: 0 2rem;
+    gap: 40px;
   }
 
   .degrees__list{
@@ -245,6 +273,14 @@ nav ul li a.active {
     display: flex;
     flex-wrap:wrap;
     justify-content: space-between;
+  }
+
+  .degrees__list__item {
+    width: auto;
+  }
+
+  .degree {
+    grid-template-columns: 1fr 3fr;
   }
 }
 
