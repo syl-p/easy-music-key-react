@@ -1,4 +1,7 @@
-export default function Selector({defaultKey, type, onChangeCallback}) {
+import { NavLink, useParams } from "react-router-dom"
+
+export default function Selector() {
+    const {key} = useParams()
     const cycle = [
         'F',
         'C',
@@ -20,21 +23,20 @@ export default function Selector({defaultKey, type, onChangeCallback}) {
         'minor'
     ]
 
+    if(!cycle.includes(key ?? "C")) {
+        throw new Error("Cette tonalité n'existe pas dans notre application.")
+    }
+
     return (
         <div className="selector">
             <div className="selector__head">
-                <h1>{defaultKey}</h1>
-                <div>
-                    {
-                        types.map(typeLabel => 
-                            (<button  onClick={() => {onChangeCallback(defaultKey, typeLabel)}} className={type == typeLabel ? 'active' : null} key={typeLabel}>{typeLabel}</button>)
-                        )
-                    }
-                </div>
+                <h1>{key ?? "C"}</h1>
             </div>
             <ul>
                 {cycle.map(c =>
-                    (<li className={defaultKey == c ? 'active' : null} key={c} onClick={() => {onChangeCallback(c)}}>{c}</li>)
+                    <li>
+                        <NavLink to={c} key={c}>{c}</NavLink>
+                    </li>
                 )}
             </ul>
         </div>
