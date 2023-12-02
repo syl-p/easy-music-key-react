@@ -5,6 +5,7 @@ import Selector from "./components/Selector.jsx";
 import TonePlayer from "./utils/tone-player.class.js";
 import { createBrowserRouter, Outlet, Router, RouterProvider, useRouteError } from 'react-router-dom';
 import MainContent from './components/MainContent.jsx';
+import DegreeList from './components/DegreeList.jsx';
 
 function ErrorView() {
   const error = useRouteError()
@@ -22,8 +23,6 @@ function App() {
     view: 'degree',
     scale: new Scale('C'),
   })
-
-  const iterations = Array.from({length: 7}, (_, index) => index)
 
   const router = createBrowserRouter([
     {
@@ -46,11 +45,15 @@ function App() {
         },
         {
           path: ':key',
-          element: <MainContent />
+          element: <MainContent />,
+          children: [
+            { path: '', element: <DegreeList /> },
+            { path: ':view', element: <DegreeList /> }
+          ]
         },
       ]
     }
-      
+
   ])
 
   return (

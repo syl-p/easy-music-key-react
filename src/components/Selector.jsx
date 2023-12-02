@@ -1,7 +1,7 @@
 import { NavLink, useParams } from "react-router-dom"
 
 export default function Selector() {
-    const {key} = useParams()
+    const { key } = useParams()
     const cycle = [
         'F',
         'C',
@@ -23,7 +23,7 @@ export default function Selector() {
         'minor'
     ]
 
-    if(!cycle.includes(key ?? "C")) {
+    if (!cycle.includes(key ?? "C")) {
         throw new Error("Cette tonalité n'existe pas dans notre application.")
     }
 
@@ -34,8 +34,8 @@ export default function Selector() {
             </div>
             <ul>
                 {cycle.map(c =>
-                    <li>
-                        <NavLink to={c} key={c}>{c}</NavLink>
+                    <li key={c}>
+                        <NavLink to={c}>{c}</NavLink>
                     </li>
                 )}
             </ul>
