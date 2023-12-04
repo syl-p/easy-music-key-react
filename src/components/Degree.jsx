@@ -1,4 +1,4 @@
-export default function Degree({view, degree, mode, soundCallback}){
+export default function Degree({ view, degree, mode, soundCallback }) {
   return (
     <div className="degree">
       <span className="degree__index">
@@ -18,7 +18,6 @@ export default function Degree({view, degree, mode, soundCallback}){
             <li key={note} className={view === 'degree' && degree.notes.includes(note) ? 'active' : null}>{note}</li>
           ))}
         </ul>
-        <p>Mode: {mode.name}</p>
       </div>
     </div>
   )

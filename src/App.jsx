@@ -41,7 +41,10 @@ function App() {
       children: [
         {
           path: '',
-          element: <MainContent />
+          element: <MainContent />,
+          children: [
+            { path: '', element: <DegreeList /> }
+          ]
         },
         {
           path: ':key',
