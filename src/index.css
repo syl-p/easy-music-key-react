@@ -78,8 +78,9 @@ body {
   padding: 10px;
   min-height: 100vh;
   display: flex;
-  flex-direction: column;
   justify-content: center;
+  align-items: center;
+  gap: 25px;
 }
 
 a {
@@ -100,6 +101,7 @@ h1 {
   line-height: 135px;
   color: var(--vt-c-green);
   text-align: center;
+  margin-bottom: 15px;
 }
 
 nav {
@@ -182,10 +184,13 @@ footer {
 
 .selector ul li a {
   color: var(--color-text);
+  font-size: 1.4rem;
 }
 
 .selector ul li a.active {
   color: var(--vt-c-green);
+  font-weight: bold;
+  text-decoration: underline;
 }
 
 .degrees__list {

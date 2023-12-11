@@ -30,7 +30,7 @@ export default function Selector() {
     return (
         <div className="selector">
             <div className="selector__head">
-                <h1>{key ?? "C"}</h1>
+                <h1>{key ?? "Choose a key"}</h1>
             </div>
             <ul>
                 {cycle.map(c =>
