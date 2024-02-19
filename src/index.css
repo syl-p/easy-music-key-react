@@ -77,10 +77,6 @@ body {
 #root {
   padding: 10px;
   min-height: 100vh;
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  gap: 25px;
 }
 
 a {
@@ -109,6 +105,7 @@ nav {
   display: flex;
   gap: 10px;
   justify-content: center;
+  margin: 20px 0;
 }
 
 nav a {
@@ -180,6 +177,7 @@ footer {
   display: flex;
   justify-content: center;
   gap: 15px;
+  flex-wrap: wrap;
 }
 
 .selector ul li a {
@@ -195,8 +193,9 @@ footer {
 
 .degrees__list {
   list-style: none;
-  padding: 20px;
-  margin: auto;
+  padding: 0px;
+  overflow: hidden;
+  overflow-y: auto;
 }
 
 .degrees__list__item {
@@ -210,11 +209,10 @@ footer {
   align-content: center;
   justify-content: center;
   align-items: center;
-  gap: 15px;
 }
 
 .degree__index {
-  font-size: 2.7em;
+  font-size: 2em;
   font-weight: bold;
   text-align: center;
 }
@@ -258,22 +256,28 @@ footer {
 }
 
 @media (min-width: 1024px) {
-  main {
+  #root  {
     display: grid;
     grid-template-columns: 0.7fr 2fr;
     padding: 0 2rem;
     gap: 40px;
   }
 
+  section {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-content: center;
+    max-height: 100vh;
+    overflow: hidden;
+  }
+
+
   .degrees__list {
     list-style: none;
     display: flex;
     flex-wrap: wrap;
     justify-content: space-between;
-  }
-
-  .degrees__list__item {
-    width: auto;
   }
 
   .degree {
